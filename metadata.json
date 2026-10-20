@@ -1,0 +1,6 @@
+{
+  "name": "X Craft - Twitter Creator Studio",
+  "description": "Professional Twitter/X content creation workstation powered by AICB creator skills: hook-first posts, viral threads, high-leverage replies, quote tweets, X Articles, and live market data.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

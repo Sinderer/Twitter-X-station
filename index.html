@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Compatibility shim for browser extensions attempting to assign window.fetch
+      (function() {
+        try {
+          var realFetch = window.fetch ? window.fetch.bind(window) : undefined;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return realFetch;
+            },
+            set: function(fn) {
+              realFetch = fn;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {}
+
+        // Suppress external browser extension runtime errors from bubbling up
+        window.addEventListener('error', function(event) {
+          if (event && event.filename && (event.filename.indexOf('chrome-extension://') !== -1 || event.filename.indexOf('moz-extension://') !== -1)) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+    <title>X Craft - Twitter Creator Studio</title>
+    <meta name="description" content="Professional Twitter/X content creation workstation powered by AICB creator skills: hook-first posts, viral threads, high-leverage replies, quote tweets, X Articles, and live market data." />
+    <meta property="og:title" content="X Craft - Twitter Creator Studio" />
+    <meta property="og:description" content="Professional Twitter/X content creation workstation powered by AICB creator skills: hook-first posts, viral threads, high-leverage replies, quote tweets, X Articles, and live market data." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
